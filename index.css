@@ -95,6 +95,7 @@ header {
     display: flex;
     gap: 40px;
 }
+
 .accountSection>div>div>a {
     text-decoration: none;
     color: black;
@@ -261,7 +262,8 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
-.signup>div>p{
+
+.signup>div>p {
     margin-top: 10px;
 }
 
@@ -283,6 +285,115 @@ header {
 /* Signup Page Ends */
 
 
+/* Shop Page Starts */
+
+
+.shopPage {
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 20px;
+}
+
+
+.itemProduct {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 20px;
+}
+
+.itemProduct:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.itemProduct>button {
+    height: 40px;
+    padding: 8px 25px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    line-height: 18px;
+    background-color: #414467;
+    color: white;
+    font-weight: bold;
+    float: right;
+    left: 250px;
+    bottom: 35px;
+    margin-top: -38px;
+}
+
+.itemProduct>p {
+    line-height: 25px;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.itemProduct>label {
+    font-size: 14px;
+}
+
+.itemProduct>h2 {
+    margin-top: 15px;
+}
+
+.itemProduct>img {
+    width: 100%;
+}
+
+.itemProduct>button:hover {
+    background-color: green;
+    transform: scale(1.05);
+}
+
+.itemProduct>button:active {
+    background-color: gray;
+    transform: scale(0.95);
+}
+
+.cong {
+    width: 90%;
+    padding: 20px;
+    background-color: rgba(0, 128, 0, 0.267);
+    margin: 10px 0;
+    border-radius: 20px;
+    color: green;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.rem {
+    width: 78%;
+    padding: 20px;
+    background-color: rgba(255, 0, 0, 0.123);
+    margin: 10px 0;
+    border-radius: 20px;
+    color: rgba(255, 0, 0, 0.849);
+    font-weight: bold;
+    margin: auto;
+}
+
+.filterShop{
+    margin-left: 2%;
+}
+
+.filterShop>select{
+    padding: 10px 20px;
+    background-color: #202340;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 15px;
+    margin: 20px 0 0 10px;
+}
+
+
+/* Shop Page Ends */
+
+
+
+
 /* Media Queries */
 @media only screen and (max-width: 1400px) {
     .searchSection {
@@ -301,6 +412,11 @@ header {
     .signIn {
         max-width: 65%;
         margin: 50px auto;
+    }
+
+    .shopPage {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 15px;
     }
 }
 
@@ -355,6 +471,13 @@ header {
     .signup {
         max-width: 75%;
     }
+    .shopPage {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 15px;
+    }
+
+
+
 }
 
 
@@ -399,6 +522,9 @@ header {
 
     .signup {
         max-width: 90%;
+    }
+    .itemProduct>button {
+        padding: 8px 15px;
     }
 }
 
