@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>SHOP.COM - SignUp Page</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="nav-placeholder">
+
+    </div>
+    <div class="signup">
+        <div>
+            <h2>Create an account</h2>
+            <p>* Indicates required field</p>
+            <form id="signUpForm">
+                <div>
+                    <div>
+                        <label for="">First Name*</label>
+                        <input type="text" name="firstName" id="firstName" placeholder="First Name Here">
+                    </div>
+                    <div>
+                        <label for="">Last Name*</label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Last Name Here">
+                    </div>
+                </div>
+                <label for="">Email Address*</label>
+                <input type="email" name="email" id="email" placeholder="yourname@example.com">
+                <div>
+                    <div>
+                        <label for="">Password* (At least 7 characters)</label>
+                        <input type="text" name="password" id="password"
+                            placeholder="Please enter a minimum of 7 characters">
+                    </div>
+                    <div>
+                        <label for="">Confirm password*</label>
+                        <input type="text" name="cpassword" id="cpassword" placeholder="Please reenter your password">
+                    </div>
+                </div>
+                <input type="submit" value="Create Your New Account">
+                <p>By creating an account, you are agreeing to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="signUp.js"></script>
