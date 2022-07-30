@@ -423,7 +423,7 @@ header {
     border-radius: 10px;
     margin-top: 25px;
     text-align: center;
-    height: 500px;
+    height: 530px;
 }
 
 .total>div {
@@ -764,6 +764,7 @@ button {
     padding-left: 0px;
 }
 
+
 /* HomePage Ends */
 
 
@@ -916,6 +917,10 @@ button {
     }
 
 
+    .section3>div>img {
+        width: 33%;
+        gap: 25px;
+    }
 
 
 }
