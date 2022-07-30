@@ -19,7 +19,8 @@ function login() {
     LoginData.forEach(user => {
         if (LoginForm.email.value == user.email && LoginForm.password.value == user.password) {
             alert("Welcome Back! "+user.firstName+" "+user.lastName+" Redirecting To Dashboard")
-            isLogged = user.firstName+" "+user.lastName
+            isLogged = user.firstName
+            localStorage.setItem('isLogged',isLogged)
             window.location.href = 'index.html'
             return
         }

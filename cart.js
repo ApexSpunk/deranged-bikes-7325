@@ -4,6 +4,7 @@ $(function () {
 });
 
 let cartArr = JSON.parse(localStorage.getItem("cart")) || []
+let orders = JSON.parse(localStorage.getItem("orders")) || []
 let promo = document.querySelector("#promo")
 document.querySelector(".offer").setAttribute("class", "offer info")
 document.querySelector(".offer").innerText = "Use [SHOP30] To Get 30% OFF"
@@ -56,6 +57,7 @@ function loadCart() {
             cartArr.splice(index, 1)
             console.log(cartArr)
             localStorage.setItem("cart", JSON.stringify(cartArr))
+            
             loadCart()
             document.querySelector(".alert").setAttribute("class", "alert rem")
             document.querySelector(".alert").innerText = product.name + " Removed From Cart"
@@ -86,4 +88,9 @@ function getTotal() {
     });
     return total.toFixed(2)
 }
+
+document.querySelector('#buyNow').addEventListener('click',()=>{
+    window.location.href = 'payment.html'
+    localStorage.setItem("orders", JSON.stringify(cartArr))
+})
 

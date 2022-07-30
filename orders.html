@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>SHOP.COM - Orders Page</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .orderPage {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            width: 96%;
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-top: 20px;
+        }
+
+        .track {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            text-align: center;
+            height: 350px;
+        }
+
+        .cart button:hover {
+            transform: scale(1.05);
+            background-color: green;
+        }
+
+        .cart button {
+            background-color: rgb(62, 132, 155) !important;
+            cursor: pointer;
+        }
+
+        .track button:hover {
+            background-color: rgb(179, 116, 0);
+        }
+
+        .track button {
+            border: none;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            margin: 5px 0;
+            cursor: pointer;
+            background-color: rgb(228, 148, 0);
+        }
+
+        .track button:first-child {
+            margin-bottom: 50px;
+        }
+
+        #user {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder">
+
+    </div>
+    <div class="alert cong">
+        Congrat's <strong><span id="user"></span></strong> your order is now confirmed
+    </div>
+    <div class="orderPage">
+        <div class="cart">
+
+        </div>
+        <div class="track">
+            <button>Track Package</button>
+            <button>Get Help With Order</button>
+            <button>Cancel Item</button>
+            <button>View Or Edit Order</button>
+            <button>Archive Order</button>
+        </div>
+    </div>
+    <div class="footer">
+        <img src="https://i.ibb.co/3YGgjNq/image.png" alt="">
+        <div>
+            <p>
+                © 1997-2022 Market America, Inc. or its affiliates. All other designated trademarks, copyrights, and
+                brands are the property of their respective owners.</p>
+            <p>Only Customers will receive cashback on qualifying purchases. UnFranchise Owners/Shop Consultants
+                will receive increased IBV instead of cashback on qualifying purchases.</p>
+            <p>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Use</a> |
+                <a href="#">Advertising Disclosure</a> |
+                <a href="#">Return Policy</a> |
+                <a href="#">Shipping Information</a>
+            </p>
+        </div>
+        <hr>
+        <img src="https://i.ibb.co/ZNPN9f8/image.png" alt="">
+    </div>
+</body>
+
+</html>
+
+<script>
+    // Importing Navbar
+    $(function () {
+        $("#nav-placeholder").load("navbar.html");
+    });
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || []
+    let promo = document.querySelector("#promo")
+
+    function loadCart() {
+        document.querySelector(".cart").innerHTML = ""
+        orders.forEach((product, index) => {
+            let card = document.createElement("div")
+            let imageDiv = document.createElement("div")
+            let priceDiv = document.createElement("div")
+            let prodImg = document.createElement("img")
+            let prodname = document.createElement("h2")
+            let prodPrice = document.createElement("h4")
+            let span = document.createElement("span")
+            let remove = document.createElement("button")
+            let soldBy = document.createElement("p")
+            prodPrice.append(document.createElement("h4"))
+            prodPrice.innerText = "Price - ₹"
+            soldBy.innerText = product.soldBy
+            span.innerText = product.price
+            prodImg.setAttribute("src", product.image)
+            prodname.innerText = product.name
+            remove.innerText = "Buy It Again"
+
+            prodPrice.append(span)
+            imageDiv.append(prodImg)
+            priceDiv.append(prodname, soldBy, prodPrice, remove)
+            card.append(imageDiv, priceDiv)
+            document.querySelector(".cart").append(card)
+        })
+
+
+
+    }
+    loadCart()
+
+    function getTotal() {
+        let total = 0
+        orders.forEach(product => {
+            total += +(product.price)
+        });
+        return total.toFixed(2)
+    }
+
+    let ouser = localStorage.getItem('isLogged')
+    document.querySelector('#user').innerText = "("+ouser+" Kumar)"
+
+</script>

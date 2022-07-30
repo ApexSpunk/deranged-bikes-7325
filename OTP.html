@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <title>OTP</title>
+  <style>
+    * {
+      font-family: Poppins;
+    }
+
+    #container {
+      width: 60%;
+      height: 500px;
+      margin: 50px auto;
+      padding: 80px 0 0 40px;
+      border-radius: 20px;
+      font-family: "Poppins";
+      background-image: url("https://payu.in/blog/wp-content/uploads/2020/12/WhatsApp-Image-2020-12-14-at-6.19.03-PM-1250x640.jpeg");
+    }
+
+    #container input {
+      width: 330px;
+      height: 30px;
+      padding-left: 10px;
+      font-size: 18px;
+      border-radius: 20px;
+
+    }
+
+    input {
+      width: 92%;
+      padding: 10px 15px;
+      border: 1px rgb(202, 202, 202) solid;
+      border-radius: 8px;
+      margin: 5px 0;
+      font-size: 16px;
+      font-family: 'Poppins'
+    }
+
+    input::placeholder {
+      padding-left: 10px;
+      font-size: 16px;
+      color: rgb(190, 190, 190);
+      font-family: 'Poppins'
+    }
+
+
+    button {
+      display: block;
+      width: 330px;
+      height: 50px;
+      margin-top: 10px;
+      background-color: rgb(33, 120, 120);
+      border: 0;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    img {
+      margin: auto;
+      display: block;
+      border-radius: 10px;
+      margin-top: 100px;
+    }
+
+    span {
+      color: red;
+      font-size: 24px;
+
+    }
+
+    button:hover {
+      background-color: rgb(28, 206, 206);
+      cursor: pointer;
+    }
+
+    .card {
+      width: 60%;
+      margin: auto;
+      text-align: center;
+      visibility: hidden;
+    }
+
+    .visible{
+      visibility: visible;
+    }
+
+    .card img:first-child {
+      margin-top: 20px;
+    }
+
+    .card>div>p:last-child {
+      margin-top: 60px;
+    }
+
+    .card>div {
+      margin-top: 40px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-radius: 20px;
+      padding: 20px 40px;
+    }
+
+    img+button{
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="container">
+
+      <p>Enter OTP sent to ******1234</p>
+      <input type="text" id="otp" placeholder="Enter OTP                                 Resend OTP" />
+      <p>
+        <span id="text"></span>
+      </p>
+
+      <button>Verify OTP</button>
+      <h3>OTP will expire in <span id="timer">4 : 59</span> minutes</h3>
+
+      <p># DONT CLOSE OR REFRESH THE PAGE</p>
+    </div>
+
+  </div>
+  <div class="card">
+    <div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+  let form = document.querySelector("button");
+  form.addEventListener("click", verify);
+  let count = 59
+  let left = 4
+  let min = 4
+  var myfunc = setInterval(function () {
+    document.querySelector('#timer').innerText = min + " : " + count;
+    count--
+    if (count == 0) {
+      count = 59
+      min--;
+    }
+  }, 1000)
+
+  function verify() {
+
+    let Otp = document.querySelector("#otp").value;
+    if (Otp != 1234) {
+      left--
+      if (left != 1) {
+        alert("Invalid Code " + (left - 1) + " Attempt Left")
+
+      }
+      if (left == 1) {
+        alert("Payment Failed Redirecting To Cart");
+        window.location.href = "cart.html"
+        localStorage.removeItem('orders')
+      }
+
+    } else {
+      alert("Congratulation ! Payment Successfull");
+      let contain = document.querySelector("#main");
+      contain.innerHTML = "";
+      document.querySelector(".card").setAttribute('class', 'card visible');
+      document.querySelector(".card>div").innerHTML = "<img src='https://thumbs.dreamstime.com/b/shop%C3%B1%20art-banner-copy-shopcart-full-purchases-flat-design-banners-trendy-colors-backround-geometric-90363030.jpg' width='100%'> <button id='goBack'>Go Back To Orders Page</button>"
+      document.querySelector("#goBack").addEventListener("click", () => {
+        localStorage.removeItem("cart")
+        window.location.href = "orders.html"
+      })
+
+    }
+
+    // if (Otp == 1234) {
+    //   alert("Congratulation ! Payment Successfull");
+    //   let contain = document.querySelector("body>div");
+    //   contain.innerHTML = "";
+    //   let img = document.createElement("img");
+    //   img.setAttribute("src", "https://thumbs.dreamstime.com/b/full-filled-shopping-cart-mobile-showing-thank-you-purchasing-186469894.jpg")
+
+    //   contain.append(img);
+    // } else {
+    //   document.querySelector("#text").innerText = "Invalid OTP";
+    // }
+  }
+
+</script>

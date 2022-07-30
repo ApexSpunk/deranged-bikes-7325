@@ -1,5 +1,6 @@
 <header>
     <p class="headBanner">Shopping made easy. Buy now, pay later with Sezzle <a href="#">See details</a></p>
+   <div>
     <div class="searchSection">
         <div>
             <a href="index.html"><img src="https://img.shop.com/Image/resources/logos/shop-logo-us-gold.svg" alt=""></a>
@@ -10,7 +11,6 @@
                     <option>All Department</option>
                     <option>Auto</option>
                     <option>Baby</option>
-                    <option>Beauty</option>
                     <option>Books</option>
                     <option>Business</option>
                     <option>Camera</option>
@@ -24,10 +24,10 @@
         <div class="accountSection">
             <div>
                 <div><img src="https://img.shop.com/Image/resources/images/icon-account-circle-24px.svg" alt="">
-                    <p><a href="login.html">Sign In</a></p>
+                    <p id="myUser"></p>
                 </div>
                 <div><img src="https://img.shop.com/Image/resources/images/icon-orders-24px.svg" alt="">
-                    <p><a href="signup.html">Sign Up</a></p>
+                    <p id="logout"></p>
                 </div>
                 <div><img src="https://img.shop.com/Image/resources/images/icon-shopping-cart-24px.svg" alt="">
                     <p><a href="cart.html">Cart</a></p>
@@ -47,6 +47,25 @@
             <a href="shop.html">Departments</a>
             <a href="shop.html">ShopBuddy</a>
             <a href="shop.html">Shop Local</a>
+            <a href="orders.html">Orders</a>
         </div>
     </div>
+   </div>
 </header>
+
+<script>
+    let myUser = localStorage.getItem('isLogged')
+    if (myUser == null) {
+        document.querySelector("#myUser").innerHTML = '<a href="login.html">Sign In</a>'
+        document.querySelector("#logout").innerHTML = '<a href="signup.html">Sign Up</a>'
+    } else {
+        document.querySelector("#myUser").innerHTML = '<a href="#">'+myUser+'</a>'
+        document.querySelector("#logout").innerHTML = '<a>logout</a>'
+        document.querySelector("#logout").style.cursor = 'pointer'
+        document.querySelector("#logout").addEventListener('click',()=>{
+            localStorage.removeItem('isLogged');
+            window.location = 'index.html'
+        })
+    }
+
+</script>
